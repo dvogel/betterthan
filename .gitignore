@@ -1,0 +1,4 @@
+*.pyc
+.*.swp
+betterthan/secret_key.py
+betterthan/settings.py
