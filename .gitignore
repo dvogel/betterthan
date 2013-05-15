@@ -1,4 +1,7 @@
-*.pyc
 .*.swp
 betterthan/secret_key.py
 betterthan/settings.py
+*.log
+*.pot
+*.pyc
+local_settings.py
