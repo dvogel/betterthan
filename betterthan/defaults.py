@@ -86,6 +86,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'south',
     'tweeteater',
+    'graphextractor'
 )
 
 LOGGING = {
