@@ -58,15 +58,19 @@ def hashtags(p):
 @pg.production("topics : ")
 def topics(p):
     if len(p) == 0:
-        return { 'topics': [] }
+        return { u'topics': [] }
     else:
         topics = [tok.value.strip('#') for tok in p[1]]
-        return { 'topics': topics }
+        return { u'topics': topics }
 
 @pg.error
 def error_handler(token):
-    pos = token.getsourcepos().idx
-    raise ValueError("Ran into a %s where it wasn't expected at offset %d" % (token.gettokentype(), pos))
+    pos = token.getsourcepos()
+    if pos:
+        offset = "offset {}".format(pos.idx)
+    else:
+        offset = u"end of stream"
+    raise ValueError("Ran into a {0} where it wasn't expected at {1}".format(token.gettokentype(), offset))
 
 TweetLexer = lex.build()
 TweetParser = pg.build()
