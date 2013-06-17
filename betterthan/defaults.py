@@ -87,7 +87,8 @@ INSTALLED_APPS = (
     'django_extensions',
     'south',
     'tweeteater',
-    'graphextractor'
+    'graphextractor',
+    'api_v1',
 )
 
 LOGGING = {
