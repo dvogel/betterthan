@@ -9,4 +9,5 @@ requests-oauthlib>=0.3.1
 wsgiref==0.1.2
 git+git://github.com/tweepy/tweepy.git#egg=tweepy
 ipython
-rply==0.6.1
+# The bleeding edge for rply has iterable token streams
+git+git://github.com/alex/rply.git#egg=rply
