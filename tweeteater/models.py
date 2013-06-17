@@ -28,7 +28,7 @@ class Tweet(models.Model):
     text = models.CharField(max_length=140, db_index=True)
     truncated = models.BooleanField()
     user = models.ForeignKey(TwitterUser)
-    verbatim_tweet = models.ForeignKey(VerbatimTweet)
+    verbatim_tweet = models.OneToOneField(VerbatimTweet)
 
     # Status fields based on events occuring after the 
     # tweet is first logged.

@@ -5,22 +5,13 @@ import logging
 import tweepy
 
 from tweeteater.models import TwitterUser, Tweet, VerbatimTweet
+from utils import dict_mget
 from django.conf import settings
 
 
 Log = logging.getLogger(os.path.basename(__file__)
                         if __name__ == "__main__"
                         else __name__)
-
-
-def dict_mget(thedict, keylist, default=None):
-    d = thedict
-    for k in keylist:
-        if k in d:
-            d = d.get(k)
-        else:
-            return default
-    return d
 
 
 class TweetListener(tweepy.streaming.StreamListener):

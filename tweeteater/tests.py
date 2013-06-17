@@ -6,7 +6,7 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
-from tweeteater.basic import dict_mget
+from utils import dict_mget
 
 
 class SimpleTest(TestCase):
