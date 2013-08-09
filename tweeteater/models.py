@@ -29,6 +29,19 @@ class Tweet(models.Model):
     truncated = models.BooleanField()
     user = models.ForeignKey(TwitterUser)
     verbatim_tweet = models.OneToOneField(VerbatimTweet)
+    # If a tweet mentions our hashtag but is in reply to a
+    # tweet that is not in our database (either because it
+    # does not mention our hashtag or it was posted before
+    # we started collecting) do we care? If we do, we need
+    # to either use the normal API to fetch that tweet before
+    # creating the tweet object or run a periodic process that
+    # checks the in_reply_to_status_id field in VerbatimTweet
+    # objects for values missing from the Tweet table. If we
+    # do fetch the tweet first, should we push this process
+    # into a worker queue? Perhaps eat_tweets should just
+    # create VerbatimTweet objects and stick it in a worker
+    # queue for parsing?
+    in_reply_to = models.ForeignKey('Tweet', null=True, blank=True)
 
     # Status fields based on events occuring after the 
     # tweet is first logged.

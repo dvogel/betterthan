@@ -104,6 +104,10 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler'
         }
     },
     'loggers': {
@@ -112,5 +116,9 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        'tweeteater.basic': {
+            'handlers': ['console'],
+            'level': 'DEBUG'
+        }
     }
 }
