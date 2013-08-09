@@ -86,6 +86,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'django_extensions',
     'south',
+    'djcelery',
     'tweeteater',
     'graphextractor',
     'api_v1',

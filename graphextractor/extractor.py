@@ -1,6 +1,7 @@
 from graphextractor.tweetparser import TweetLexer, TweetParser
 from graphextractor.models import Edge, Topic
 
+
 def parse_tweet_text(tweet_text):
     """
     Attempts to parse the text of the given tweet (model or model pk).

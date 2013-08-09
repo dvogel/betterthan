@@ -56,6 +56,18 @@ class Edge(models.Model):
     class Meta:
         unique_together = ('worse_url', 'better_url')
 
+def model_vars(obj):
+    return dict(((fld.name, getattr(obj, fld.name))
+                 for fld in obj._meta.fields))
+
 class EdgeTweet(tweeteater.models.Tweet):
     edge = models.ForeignKey(Edge, related_name='tweets')
+
+    @classmethod
+    def create_for_edge_and_tweet(cls, edge, tweet):
+        tweet_vars = model_vars(tweet)
+        edge_tweet = EdgeTweet.objects.create(tweet_ptr=tweet,
+                                              edge=edge,
+                                              **tweet_vars)
+        return edge_tweet
 
